@@ -22,26 +22,82 @@ const links = [
 
 		<div class="hidden md:flex items-center space-x-10">
 			{links.map(link => (
-				<a 
-					href={link.href} 
+				<a
+					href={link.href}
 					class="mono text-xs uppercase tracking-widest text-white/70 hover:text-safety-orange transition-colors"
 				>
 					{link.name}
 				</a>
 			))}
-			<a 
-				href="/quote" 
+			<a
+				href="/quote"
 				class="bg-safety-orange text-charcoal px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors"
 			>
 				Get a Quote
 			</a>
 		</div>
 
-		<!-- Mobile menu toggle button (could add JS for this) -->
-		<button class="md:hidden text-white">
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+		<!-- Mobile menu toggle -->
+		<button id="mobile-menu-btn" class="md:hidden text-white" aria-label="Toggle menu" aria-expanded="false">
+			<!-- Hamburger icon -->
+			<svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="4" x2="20" y1="6" y2="6"></line>
+				<line x1="4" x2="20" y1="12" y2="12"></line>
+				<line x1="4" x2="20" y1="18" y2="18"></line>
+			</svg>
+			<!-- X icon -->
+			<svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+				<line x1="18" x2="6" y1="6" y2="18"></line>
+				<line x1="6" x2="18" y1="6" y2="18"></line>
+			</svg>
 		</button>
+	</div>
+
+	<!-- Mobile menu panel -->
+	<div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-charcoal/95">
+		<div class="container mx-auto px-6 py-4 flex flex-col space-y-1">
+			{links.map(link => (
+				<a
+					href={link.href}
+					class="mono text-xs uppercase tracking-widest text-white/70 hover:text-safety-orange transition-colors py-3 border-b border-white/5 last:border-0"
+				>
+					{link.name}
+				</a>
+			))}
+			<a
+				href="/quote"
+				class="mt-4 bg-safety-orange text-charcoal px-5 py-3 text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors text-center"
+			>
+				Get a Quote
+			</a>
+		</div>
 	</div>
 </nav>
 
 <div class="h-[76px]"></div>
+
+<script>
+	const btn = document.getElementById('mobile-menu-btn');
+	const menu = document.getElementById('mobile-menu');
+	const iconOpen = document.getElementById('icon-open');
+	const iconClose = document.getElementById('icon-close');
+
+	btn?.addEventListener('click', () => {
+		const isOpen = !menu?.classList.contains('hidden');
+
+		menu?.classList.toggle('hidden', isOpen);
+		iconOpen?.classList.toggle('hidden', !isOpen);
+		iconClose?.classList.toggle('hidden', isOpen);
+		btn?.setAttribute('aria-expanded', String(!isOpen));
+	});
+
+	// Close menu when a link is tapped
+	menu?.querySelectorAll('a').forEach(link => {
+		link.addEventListener('click', () => {
+			menu.classList.add('hidden');
+			iconOpen?.classList.remove('hidden');
+			iconClose?.classList.add('hidden');
+			btn?.setAttribute('aria-expanded', 'false');
+		});
+	});
+</script>
