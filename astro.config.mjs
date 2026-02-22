@@ -6,6 +6,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://rsteth.github.io',
+  base: '/precision-machining-gemini',
   vite: {
     plugins: [tailwindcss()]
   },
