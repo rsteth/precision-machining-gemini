@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #121212;
+  --color-matte-black: #1a1a1a;
+  --color-safety-orange: #ff6b00;
+  --color-accent-blue: #0070f3;
+  --font-sans: "Montserrat", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-charcoal text-white font-sans;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+  }
+}

@@ -1,0 +1,47 @@
+---
+const links = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Services', href: '/services' },
+	{ name: 'Capabilities', href: '/capabilities' },
+	{ name: 'Case Studies', href: '/case-studies' },
+	{ name: 'Quote', href: '/quote' },
+];
+---
+
+<nav class="fixed top-0 w-full z-50 bg-charcoal/80 backdrop-blur-md border-b border-white/5 py-4">
+	<div class="container mx-auto px-6 flex justify-between items-center">
+		<a href="/" class="flex items-center space-x-2 group">
+			<div class="w-8 h-8 bg-safety-orange flex items-center justify-center rounded-sm transition-transform group-hover:rotate-12">
+				<span class="font-mono text-charcoal font-black text-xl">P</span>
+			</div>
+			<div class="flex flex-col">
+				<span class="text-xl font-extrabold tracking-tighter leading-none">PEAK PRECISION</span>
+				<span class="text-[10px] mono tracking-[0.2em] text-safety-orange font-bold leading-none">MACHINING & MECHANICAL</span>
+			</div>
+		</a>
+
+		<div class="hidden md:flex items-center space-x-10">
+			{links.map(link => (
+				<a 
+					href={link.href} 
+					class="mono text-xs uppercase tracking-widest text-white/70 hover:text-safety-orange transition-colors"
+				>
+					{link.name}
+				</a>
+			))}
+			<a 
+				href="/quote" 
+				class="bg-safety-orange text-charcoal px-5 py-2 rounded-sm text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors"
+			>
+				Get a Quote
+			</a>
+		</div>
+
+		<!-- Mobile menu toggle button (could add JS for this) -->
+		<button class="md:hidden text-white">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+		</button>
+	</div>
+</nav>
+
+<div class="h-[76px]"></div>

@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const equipment = [
+	{ name: 'Haas VF-4SS', type: 'CNC Mill', capacity: '50" x 20" x 25"', features: '4-Axis, 12,000 RPM' },
+	{ name: 'Mazak Quick Turn', type: 'CNC Lathe', capacity: '14" x 24"', features: 'Live Tooling, Sub-Spindle' },
+	{ name: 'Okuma Genos M560-V', type: 'CNC Mill', capacity: '41" x 22" x 18"', features: 'High Precision, Heavy Duty' },
+	{ name: 'Cylindrical Grinder', type: 'Precision Grinding', capacity: '10" x 30"', features: 'Internal & External' },
+	{ name: 'TIG/MIG Welding', type: 'Fabrication', capacity: 'Stainless, Aluminum, Tool Steel', features: 'Certified Pressure Welding' },
+	{ name: 'Laser Alignment', type: 'Field Service', capacity: 'Up to 20m Shafts', features: 'Vibration Analysis Reporting' },
+];
+---
+
+<Layout title="Capabilities & Equipment">
+	<Navbar />
+	<main class="py-32 bg-charcoal">
+		<div class="container mx-auto px-6">
+			<div class="flex flex-col md:flex-row md:items-end justify-between mb-24">
+				<div class="max-w-2xl">
+					<span class="mono text-[10px] uppercase tracking-[0.3em] text-safety-orange font-black mb-6 block">Industrial Capacity</span>
+					<h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-0 leading-none">
+						SHOP <span class="text-safety-orange">SPECS.</span>
+					</h1>
+				</div>
+				<div class="mt-8 md:mt-0 max-w-sm">
+					<p class="text-sm text-white/40 font-medium leading-relaxed uppercase tracking-widest mono">
+						State-of-the-art machinery meets deep technical expertise.
+					</p>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 gap-4">
+				<div class="hidden md:grid grid-cols-4 px-8 py-6 mono text-[10px] uppercase tracking-widest text-white/40 border-b border-white/10">
+					<div>Equipment</div>
+					<div>Type</div>
+					<div>Capacity / Range</div>
+					<div>Key Features</div>
+				</div>
+
+				{equipment.map(item => (
+					<div class="group relative bg-white/5 border border-white/10 hover:border-safety-orange transition-colors">
+						<div class="absolute inset-y-0 left-0 w-1 bg-safety-orange opacity-0 group-hover:opacity-100 transition-opacity"></div>
+						<div class="grid grid-cols-1 md:grid-cols-4 gap-4 px-8 py-10 md:py-12 items-center">
+							<div class="text-2xl font-black">{item.name}</div>
+							<div>
+								<span class="md:hidden block mono text-[10px] text-white/20 uppercase tracking-widest mb-1">Type</span>
+								<span class="mono text-xs text-safety-orange font-black uppercase tracking-widest">{item.type}</span>
+							</div>
+							<div>
+								<span class="md:hidden block mono text-[10px] text-white/20 uppercase tracking-widest mb-1">Capacity</span>
+								<span class="text-sm font-bold text-white/80">{item.capacity}</span>
+							</div>
+							<div>
+								<span class="md:hidden block mono text-[10px] text-white/20 uppercase tracking-widest mb-1">Features</span>
+								<span class="text-sm font-medium text-white/40">{item.features}</span>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<div class="mt-32 p-12 bg-safety-orange text-charcoal">
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+					<div class="lg:col-span-2">
+						<h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6 leading-none">CUSTOM SPECIFICATIONS REQUIRED?</h2>
+						<p class="text-lg font-bold opacity-80 leading-snug">Our team specializes in one-off prototypes and highly custom part modification. If you have unique specs, we have the engineers to solve them.</p>
+					</div>
+					<div class="flex justify-end">
+						<a href="/quote" class="bg-charcoal text-white px-10 py-5 text-xs font-black uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all inline-block whitespace-nowrap">
+							Discuss Your Specs
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

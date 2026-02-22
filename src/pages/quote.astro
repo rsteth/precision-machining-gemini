@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import QuoteWizard from '../components/QuoteWizard';
+---
+
+<Layout title="Request a Quote">
+	<Navbar />
+	<main class="py-32 bg-charcoal">
+		<div class="container mx-auto px-6">
+			<div class="max-w-4xl mx-auto text-center mb-24">
+				<span class="mono text-[10px] uppercase tracking-[0.3em] text-safety-orange font-black mb-6 block">Direct Consultation</span>
+				<h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-none">
+					REQUEST A <span class="text-safety-orange">QUOTE.</span>
+				</h1>
+				<p class="text-xl text-white/60 font-medium max-w-2xl mx-auto">
+					Submit your project specifications and our engineering team will provide a detailed estimate within 24 hours.
+				</p>
+			</div>
+
+			<div class="max-w-5xl mx-auto">
+				<QuoteWizard client:load />
+			</div>
+
+			<div class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/5 pt-24 text-center">
+				<div>
+					<h3 class="mono text-[10px] text-safety-orange font-black uppercase tracking-widest mb-6">Expert Review</h3>
+					<p class="text-sm text-white/40 font-medium">Every quote is reviewed by a senior machinist to ensure technical feasibility and optimal pricing.</p>
+				</div>
+				<div>
+					<h3 class="mono text-[10px] text-safety-orange font-black uppercase tracking-widest mb-6">Rapid Turnaround</h3>
+					<p class="text-sm text-white/40 font-medium">We pride ourselves on our responsiveness. Expect your quote in hours, not days.</p>
+				</div>
+				<div>
+					<h3 class="mono text-[10px] text-safety-orange font-black uppercase tracking-widest mb-6">Global Support</h3>
+					<p class="text-sm text-white/40 font-medium">We work with clients locally in Bow Valley and internationally for specialized precision parts.</p>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>

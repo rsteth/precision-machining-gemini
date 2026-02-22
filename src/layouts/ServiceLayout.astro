@@ -1,0 +1,46 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const { title, description, details } = Astro.props;
+---
+
+<Layout title={title}>
+	<Navbar />
+	<main class="py-32 bg-charcoal">
+		<div class="container mx-auto px-6">
+			<div class="max-w-4xl">
+				<a href="/services" class="mono text-[10px] text-safety-orange font-black uppercase tracking-widest mb-6 flex items-center hover:translate-x-[-4px] transition-transform">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 rotate-180"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+					All Services
+				</a>
+				<h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-12 leading-none uppercase">
+					{title.split(' ').map((word, i) => (
+						i === title.split(' ').length - 1 ? <span class="text-safety-orange">{word}</span> : word + ' '
+					))}
+				</h1>
+				<p class="text-2xl text-white/60 font-medium mb-16 leading-relaxed">
+					{description}
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-24">
+				<div class="lg:col-span-2 space-y-12">
+					{details.map(detail => (
+						<div class="p-10 bg-white/5 border border-white/10">
+							<h3 class="text-3xl font-black mb-4 uppercase">{detail.title}</h3>
+							<p class="text-white/60 font-medium leading-relaxed">{detail.text}</p>
+						</div>
+					))}
+				</div>
+				<aside class="space-y-8">
+					<div class="p-10 bg-safety-orange text-charcoal">
+						<h3 class="text-2xl font-black mb-4 uppercase">Fast Response</h3>
+						<p class="font-bold mb-8">Need emergency repair or a quick turnaround? Contact our Bow Valley shop directly.</p>
+						<a href="/quote" class="block text-center py-4 bg-charcoal text-white text-xs font-black uppercase tracking-widest hover:bg-white hover:text-charcoal transition-all">Get a Quote</a>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</main>
+</Layout>

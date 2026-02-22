@@ -1,0 +1,15 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const props = {
+	title: "FIELD SERVICES",
+	description: "On-site precision alignment and vibration analysis to eliminate equipment downtime.",
+	details: [
+		{ title: "LASER ALIGNMENT", text: "Shaft and belt alignment to ensure your equipment runs smoothly and lasts longer." },
+		{ title: "VIBRATION ANALYSIS", text: "Predictive maintenance to catch equipment failure before it causes a shutdown." },
+		{ title: "ON-SITE MACHINING", text: "Bringing the shop to you when moving equipment isn't an option." },
+	]
+};
+---
+
+<ServiceLayout {...props} />

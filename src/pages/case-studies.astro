@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const projects = [
+	{ title: 'Quarry Excavator Repair', client: 'Lafarge Holcim', service: 'Hydraulics', outcome: 'Saved $50k in downtime costs.', image: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=2000&auto=format&fit=crop' },
+	{ title: 'Custom Aerospace Prototyping', client: 'MDA Space', service: 'Precision Milling', outcome: 'Achieved 0.0002" tolerance.', image: 'https://images.unsplash.com/photo-1565439386296-0884bbec6b43?q=80&w=2000&auto=format&fit=crop' },
+	{ title: 'Oilfield Pump Rebuild', client: 'Suncor Energy', service: 'Mechanical', outcome: 'Restored to OEM specs in 48h.', image: 'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2000&auto=format&fit=crop' },
+];
+---
+
+<Layout title="Case Studies & Results">
+	<Navbar />
+	<main class="py-32 bg-charcoal">
+		<div class="container mx-auto px-6">
+			<div class="flex flex-col md:flex-row md:items-end justify-between mb-24">
+				<div class="max-w-2xl">
+					<span class="mono text-[10px] uppercase tracking-[0.3em] text-safety-orange font-black mb-6 block">Field Proven</span>
+					<h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-0 leading-none">
+						REAL <span class="text-safety-orange">RESULTS.</span>
+					</h1>
+				</div>
+				<div class="mt-8 md:mt-0 max-w-sm">
+					<p class="text-sm text-white/40 font-medium leading-relaxed uppercase tracking-widest mono">
+						Documenting the precision and reliability delivered across industries.
+					</p>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+				{projects.map(project => (
+					<div class="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-safety-orange transition-all duration-500">
+						<div class="aspect-video relative overflow-hidden">
+							<div class="absolute inset-0 bg-charcoal/40 group-hover:bg-charcoal/0 transition-colors duration-500 z-10"></div>
+							<img src={project.image} alt={project.title} class="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0 opacity-40 group-hover:opacity-100" />
+							<div class="absolute top-6 left-6 z-20">
+								<span class="mono text-[10px] bg-safety-orange text-charcoal px-3 py-1 font-black uppercase tracking-widest">{project.service}</span>
+							</div>
+						</div>
+						<div class="p-10 relative z-20">
+							<span class="mono text-[10px] text-white/40 font-black uppercase tracking-widest mb-2 block">{project.client}</span>
+							<h3 class="text-4xl font-black mb-6 group-hover:text-safety-orange transition-colors">{project.title}</h3>
+							<div class="flex items-center space-x-4 mb-8">
+								<div class="w-12 h-1 px-1 bg-white/10">
+									<div class="w-full h-full bg-safety-orange"></div>
+								</div>
+								<p class="text-sm font-bold uppercase tracking-widest mono">OUTCOME: <span class="text-white">{project.outcome}</span></p>
+							</div>
+							<a href="#" class="inline-flex items-center text-xs mono uppercase tracking-widest font-black group-hover:text-safety-orange">
+								Read Case Study
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 group-hover:translate-x-1 transition-transform"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+							</a>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</main>
+</Layout>

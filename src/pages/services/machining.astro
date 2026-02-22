@@ -1,0 +1,15 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const props = {
+	title: "CNC MACHINING",
+	description: "Precision milling and turning for the most demanding technical specifications.",
+	details: [
+		{ title: "5-AXIS MILLING", text: "Complex geometries and aerospace-grade tolerances handled with ease using our state-of-the-art 5-axis machining centers." },
+		{ title: "CNC TURNING", text: "High-precision turning with live tooling, enabling us to deliver finished parts in a single operation." },
+		{ title: "PROTOTYPING", text: "Rapid development and execution of one-off components for engineers and designers." },
+	]
+};
+---
+
+<ServiceLayout {...props} />
